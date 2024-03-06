@@ -40,7 +40,7 @@ public class PortalControlador {
     }
     
     
-    @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')") //esto es para que solo puedan cargar la pagina los que estan autorizados (como por ejemplo los registrados)
+    @PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')") 
     @GetMapping("/inicio")
     public String inicio(){
         return "inicio.html";
