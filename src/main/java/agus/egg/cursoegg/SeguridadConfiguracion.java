@@ -47,26 +47,22 @@ public class SeguridadConfiguracion extends WebSecurityConfigurerAdapter{
     
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-     http.headers().frameOptions().sameOrigin().and() //.headers().frameOptions().sameOrigin().and()   asi tiene el del video de egg pero no el chico
+     http.headers().frameOptions().sameOrigin().and() 
           .authorizeRequests()
                 .antMatchers("/css/*", "/js/*","/img/*", "/**")
                 .permitAll()
           .and().formLogin()
-                .loginPage("/login") // Que formulario esta mi login
+                .loginPage("/login") 
                       .loginProcessingUrl("/logincheck")
-                      .usernameParameter("username") // Como viajan los datos del logueo
-                      .passwordParameter("password")// Como viajan los datos del logueo
-                      .defaultSuccessUrl("/inicio") // A que URL viaja 
+                      .usernameParameter("username") 
+                      .passwordParameter("password")
+                      .defaultSuccessUrl("/inicio") 
                       .permitAll()
                 .and().logout() // Aca configuro la salida
                       .logoutUrl("/logout")
-                      .logoutSuccessUrl("/login") //ULTIMA ACTUALIZACION: ENTRE LAS COMILLAS ESTABA ASI "/" PERO AL DESLOGEARME ME SALIA AI INDEX Y CUANDO MODIFIQUE ESO
-             //ME LLEVA AL LOGIN PERO AUN ASI NO ME MUESTRA EL MENSAJE DE DESLOGEO CORRECTAMENTE
+                      .logoutSuccessUrl("/login") 
                       .permitAll().and().csrf().disable();
-                       //.and().csrf().disable(); y esto hago y funciona el tema de conexion con base de datos pero no funciona el tema de logout ya que marca error
-                       // si copio eso despues de permitall() entonces funciona y entra a la base de datos pero no me deslogea si no que me lleva a la pagina localhost8080
-                       //VIDEO V6 MINUTOS FINALES YA QUE ES CUANDO LOGRA HACERLO ANDAR
-                       //UNICO ERROR HASTA AHORA ES ESTE DE LOGOUT NO ME SALE. INDICADO ARRIBA
+                       
     }
     
     
