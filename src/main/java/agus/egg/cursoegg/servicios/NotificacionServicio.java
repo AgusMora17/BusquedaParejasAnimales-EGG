@@ -21,7 +21,7 @@ public class NotificacionServicio {
     @Autowired
     private JavaMailSender mailSender;
     
-    @Async //asincrono no espera a que se termine de mandar el mail, lo ejectuta en un hilo paralelo
+    @Async 
     public void enviar(String cuerpo, String titulo, String mail){
         SimpleMailMessage mensaje=new SimpleMailMessage();
         mensaje.setTo(mail);
