@@ -43,7 +43,7 @@ public class MascotaServicio {
         validar(nombre,sexo);
         
         Mascota mascota=new Mascota();
-        mascota.setUsuario(usuario); //me faltó tirarle este ya que pasaba un perro sin id de usuario
+        mascota.setUsuario(usuario); 
         mascota.setNombre(nombre);
         mascota.setSexo(sexo);
         mascota.setAlta(new Date());
