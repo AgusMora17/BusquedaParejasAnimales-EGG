@@ -39,8 +39,8 @@ public class MascotaController {
     @Autowired
     private UsuarioServicio usuarioServicio;
     
-                   //(required = true) si no agregaba este required = false no corre la aplicacion por problema de no existencia de bean en springboot, hay otras soluciones pero decidí irme por esta. Si no https://stackoverflow.com/questions/59993124/the-injection-point-has-the-following-annotations-org-springframework-beans
-    @Autowired     // hablando de mascotaservicio no. ULTIMA ACLARACION: FALTABA LA ANOTACION SERVICE EN MASCOTASERIVICIO GORREADOOO
+                   
+    @Autowired     
     private MascotaServicio mascotaServicio;
     
     @PostMapping("/eliminar-perfil")
@@ -65,7 +65,7 @@ public class MascotaController {
         List<Mascota> mascotas= mascotaServicio.buscarMascotasPorUsuario(login.getId());
         model.put("mascotas", mascotas);
         
-        return "mascotas"; //NO ENTIENDO POR QUÉ ABAJO LO PONE CON .HTML Y ACÁ NO, PERO SI LO PONGO CON .html no funciona. Buena pregunta
+        return "mascotas"; 
     }
     
     
@@ -99,7 +99,7 @@ public class MascotaController {
         
     }
     
-    //@PreAuthorize("hasAnyRole('ROLE_USUARIO_REGISTRADO')")
+    
     @PostMapping("/actualizar-perfil")
     public String actualizar(ModelMap modelo,HttpSession session, MultipartFile archivo, @RequestParam String id, @RequestParam String nombre, @RequestParam Sexo sexo, @RequestParam Tipo tipo) {
         Usuario login = (Usuario) session.getAttribute("usuariosession");
@@ -108,7 +108,7 @@ public class MascotaController {
             return "redirect:/login";
         }
         try {
-            //Usuario login = (Usuario) session.getAttribute("usuariosession"); esto es para atribuir un usario al llamado pero solo comento para explicarlo todo cool
+            
             if (id == null || id.isEmpty()) {
                 mascotaServicio.agregarMascota(archivo, login.getId(), nombre, sexo, tipo);
             } else {
