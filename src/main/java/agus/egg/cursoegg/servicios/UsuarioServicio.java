@@ -72,7 +72,7 @@ public class UsuarioServicio implements UserDetailsService{
         
         usuarioRepositorio.save(usuario);
         
-        //notificacionServicio.enviar("Bienvenidos al Tinder de Mascota", "Tinder de Mascota", usuario.getMail());
+        
         
     }
     
@@ -168,21 +168,14 @@ public class UsuarioServicio implements UserDetailsService{
            GrantedAuthority p1 =new SimpleGrantedAuthority("ROLE_USUARIO_REGISTRADO");
            permisos.add(p1);
            
-           //esto es para recuperar informacion como nombre y apellido y mostrarlos una vez que nos logueamos. tambien se agrega una linea en el inicio.html que es donde se muestra
+           
            ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
            HttpSession session = attr.getRequest().getSession(true);
            session.setAttribute("usuariosession", usuario);
            
-           //GrantedAuthority p1 =new SimpleGrantedAuthority("MODULO_FOTOS");
-           //permisos.add(p1);
            
-           //GrantedAuthority p2 =new SimpleGrantedAuthority("MODULO_MASCOTAS");
-           //permisos.add(p2);
            
-           //GrantedAuthority p3 =new SimpleGrantedAuthority("MODULO_VOTOS");
-           //permisos.add(p3);
-           
-           User user = new User(usuario.getMail(), usuario.getClave(), permisos); //en user el repositorio que debe llama es userpropierities.User y no el de userDetails ya que falla 
+           User user = new User(usuario.getMail(), usuario.getClave(), permisos); 
            return user;
        } else {
            return null;
