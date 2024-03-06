@@ -50,12 +50,12 @@ public class UsuarioController {
         }
         
         try {
-        Usuario usuario = usuarioServicio.buscarPorId(id); //buscarPorId(id) tuve que crearlo yo asi que puede no ser el mismo del video. AHORA PUDE VERLO Y COPIARLO Y ASI SI ANDA EL TRY CATCH
+        Usuario usuario = usuarioServicio.buscarPorId(id); 
         model.addAttribute("perfil", usuario);
         } catch (ErrorServicio e) {
             model.addAttribute("error", e.getMessage());
         }
-        //lo pone en un try catch pero no me deja ponerlo ya que tira error
+        
         return "perfil.html";
         
     }
