@@ -24,7 +24,7 @@ public class FotoServicio {
     @Autowired
     private FotoRepositorio fotoRepositorio;
     
-    @Transactional //para que si no haya errores pueda moficiar la base de datos. Si hay errores hace un rollback y no pasa nada
+    @Transactional 
     public Foto guardar(MultipartFile archivo) throws ErrorServicio{
         if (archivo != null && !archivo.isEmpty()) {
             try {
